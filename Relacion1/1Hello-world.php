@@ -36,28 +36,6 @@
     <?php echo  "Hello wolrd <br>" . date(DATE_ATOM) ;?>
     <?php echo "Hello world <br>" . date("Y-m-d H:i:s");?>
     <br>
-    
-    <!-- 2- Haz un programa PHP que muestre un valor de ejemplo de cada tipo de
-    dato escalar en php con echo utilizando la función var_dump(), y también
-    con printf formateado.-->
-
-    <?php
-    $boolean = true;
-    echo "El valor del boolean es: $boolean. <br>
-    Con varDump: " . var_dump($boolean);
-
-    $int = 54;
-    echo "El valor del entero es: $int <br>";
-
-    $float = 2.4556;
-    echo "El valor del float es: $float<br>";
-
-    $string = "Macarrones";
-    echo "El valor del string es: $string<br>";
-
-
-    ?>
-    
 
 </body>
 
