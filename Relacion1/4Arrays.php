@@ -19,8 +19,6 @@
             echo DIAS_DE_LA_SEMANA[$x];
         }
 
-        
-        
     ?>
     
 </body>
