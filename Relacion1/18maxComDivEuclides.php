@@ -11,10 +11,26 @@
 
     <?php  
     
-        $num1 = 500;
-        $num2 = 25;
+        $num1 = 152334;
+        $num2 = 181533;
 
+        $encontrado = false;
+
+        echo "El máximo común divisor de $num1 y $num2 es: ";
         
+        while(!$encontrado){
+            if($num1 > $num2){
+                $num1 -= $num2;
+
+            }else if($num1 < $num2){
+                $num2 = $num2 - $num1;
+
+            }else{
+                $encontrado = true;
+            }
+        }
+
+        echo $num1;
     
     ?>
     

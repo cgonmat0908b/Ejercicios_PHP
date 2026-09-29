@@ -10,6 +10,7 @@
 <body>
 
     <?php 
+    
         // Creación de array asociativo constante
         const ASOCIATIVO = array("Lunes" => 25.4 , "Martes" => 33.7
         , "Miércoles" => 28.5 , "Jueves" => 29.7 , "Viernes" => 30.5 ,
