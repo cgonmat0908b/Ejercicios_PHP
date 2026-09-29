@@ -10,17 +10,31 @@
 <body>
 
     <?php
+
+        // Apartado 1
         const DIAS_DE_LA_SEMANA = array("Lunes","Martes","Miércoles"
         ,"Jueves","Viernes","Sabado","Domingo");
 
-        echo DIAS_DE_LA_SEMANA[0];
+        echo DIAS_DE_LA_SEMANA[0] . "<br>";
 
-        for($x = 0; $x < 7; $x++){
-            echo DIAS_DE_LA_SEMANA[$x];
+        // Apartado 2
+        for($x = 0; $x < count(DIAS_DE_LA_SEMANA); $x++){
+            echo DIAS_DE_LA_SEMANA[$x], " ";
         }
-
+        
     ?>
     
+    <!-- Apartado 3 -->
+    <ol>
+        <?php 
+
+            for($x = 0; $x < count(DIAS_DE_LA_SEMANA); $x++){
+                echo "<li>" . DIAS_DE_LA_SEMANA[$x] . "</li>";
+            }
+
+        ?>
+    </ol>
+
 </body>
 
 </html>
