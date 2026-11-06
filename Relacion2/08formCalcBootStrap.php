@@ -68,44 +68,24 @@
                     <!-- Procesado de datos al ser enviados -->
                     <?php
                         
+                        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                            if(isset($_POST["num1"], $_POST["num2"], $_POST["sign"])){
+                                // Variables
+                                $num1 = (int) ($_POST["num1"]);
+                                $num2 = (int) ($_POST["num2"]);
+                                $sign = $_POST["sign"];
+                                $resultado = 0;
+                            }
 
-                        if(isset($_GET["num1"], $_GET["num2"], $_GET["sign"])){
+                        }else if($_SERVER["REQUEST_METHOD"] == "GET"){
+                            if(isset($_GET["num1"], $_GET["num2"], $_GET["sign"])){
                             // Variables
                             $num1 = (int) ($_GET["num1"]);
                             $num2 = (int) ($_GET["num2"]);
                             $sign = $_GET["sign"];
                             $resultado = 0;
 
-                            // Control del signo, Operación a realizar, Mostrar resultado.
-                            switch ($sign){
-                                
-                                case "+":
-                                    $resultado = $num1 + $num2;
-                                    echo "<p>$num1 + $num2 = $resultado</p>";
-                                    break;
-
-                                case "-":
-                                    $resultado = $num1 - $num2;
-                                    echo "<p>$num1 - $num2 = $resultado</p>";
-                                    break;
-                                
-                                case "*":
-                                    $resultado = $num1 * $num2;
-                                    echo "<p>$num1 * $num2 = $resultado</p>";
-                                    break;
-
-                                case "/":
-                                    $resultado = (float)($num1 / $num2);
-                                    echo "<p>$num1 / $num2 = $resultado</p>";
-                                    break;
-                                
-                                case "%":
-                                    $resultado = $num1 % $num2;
-                                    echo "<p>$num1 % $num2 = $resultado </p>";
-                                    break;
-
-                            }
-
+                        }
                             // Con match
 
                             /*$resultado = match($sign){
@@ -117,6 +97,35 @@
                                 default => 0
                             };
                             */
+                        }
+
+                        // Control del signo, Operación a realizar, Mostrar resultado.
+                        switch ($sign){
+                            
+                            case "+":
+                            $resultado = $num1 + $num2;
+                            echo "<p>$num1 + $num2 = $resultado</p>";
+                            break;
+
+                            case "-":
+                            $resultado = $num1 - $num2;
+                            echo "<p>$num1 - $num2 = $resultado</p>";
+                            break;
+                                        
+                            case "*":
+                            $resultado = $num1 * $num2;
+                            echo "<p>$num1 * $num2 = $resultado</p>";
+                            break;
+
+                            case "/":
+                            $resultado = (float)($num1 / $num2);
+                            echo "<p>$num1 / $num2 = $resultado</p>";
+                            break;
+                                        
+                            case "%":
+                            $resultado = $num1 % $num2;
+                            echo "<p>$num1 % $num2 = $resultado </p>";
+                            break;
 
                         }
                     ?>

@@ -40,41 +40,44 @@
     <?php  
 
         // Variables
-        $num1 = (int) ($_GET["num1"]);
-        $num2 = (int) ($_GET["num2"]);
-        $sign = $_GET["sign"];
-        $resultado = 0;
+        if(isset($_GET["num1"], $_GET["num2"], $_GET["sign"])){
+            $num1 = (int) ($_GET["num1"]);
+            $num2 = (int) ($_GET["num2"]);
+            $sign = $_GET["sign"];
+            $resultado = 0;
 
-        // Control del signo, Operación a realizar, Mostrar resultado.
-        switch ($sign){
+            // Control del signo, Operación a realizar, Mostrar resultado.
+
             
-            case "+":
-                $resultado = $num1 + $num2;
-                echo "<p>$num1 + $num2 = $resultado</p>";
-                break;
+            switch ($sign){
+                
+                case "+":
+                    $resultado = $num1 + $num2;
+                    echo "<p>$num1 + $num2 = $resultado</p>";
+                    break;
 
-            case "-":
-                $resultado = $num1 - $num2;
-                echo "<p>$num1 - $num2 = $resultado</p>";
-                break;
-            
-            case "*":
-                $resultado = $num1 * $num2;
-                echo "<p>$num1 * $num2 = $resultado</p>";
-                break;
+                case "-":
+                    $resultado = $num1 - $num2;
+                    echo "<p>$num1 - $num2 = $resultado</p>";
+                    break;
+                
+                case "*":
+                    $resultado = $num1 * $num2;
+                    echo "<p>$num1 * $num2 = $resultado</p>";
+                    break;
 
-            case "/":
-                $resultado = $num1 / $num2;
-                echo "<p>$num1 / $num2 = $resultado</p>";
-                break;
-            
-            case "%":
-                $resultado = $num1 % $num2;
-                echo "<p>$num1 % $num2 = $resultado </p>";
-                break;
+                case "/":
+                    $resultado = $num1 / $num2;
+                    echo "<p>$num1 / $num2 = $resultado</p>";
+                    break;
+                
+                case "%":
+                    $resultado = $num1 % $num2;
+                    echo "<p>$num1 % $num2 = $resultado </p>";
+                    break;
 
+            }
         }
-
     ?>
 
 </body>
