@@ -1,76 +1,126 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Resultado de la operación</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    
+
+<body class="bg-secondary">
+
     <?php
-                        
-                        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                            if(isset($_POST["num1"], $_POST["num2"], $_POST["sign"])){
-                                // Variables
-                                $num1 = (int) ($_POST["num1"]);
-                                $num2 = (int) ($_POST["num2"]);
-                                $sign = $_POST["sign"];
-                                $resultado = 0;
-                            }
+        $resultado = null;
+        $operacion = "";
+        $error = "";
 
-                        }else if($_SERVER["REQUEST_METHOD"] == "GET"){
-                            if(isset($_GET["num1"], $_GET["num2"], $_GET["sign"])){
-                            // Variables
-                            $num1 = (int) ($_GET["num1"]);
-                            $num2 = (int) ($_GET["num2"]);
-                            $sign = $_GET["sign"];
-                            $resultado = 0;
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $datos = $_POST;
+        } else {
+            $datos = $_GET;
+        }
 
-                        }
-                            // Con match
+        if (isset($datos["num1"], $datos["num2"], $datos["sign"])) {
 
-                            /*$resultado = match($sign){
-                                "+" => $num1 + $num2,
-                                "-" => $num1 - $num2,
-                                "*" => $num1 * $num2,
-                                "/" => $num1 / $num2,
-                                "%" => $num1 % $num2,
-                                default => 0
-                            };
-                            */
-                        }
+            // Variables
+            $num1 = (int) $datos["num1"];
+            $num2 = (int) $datos["num2"];
+            $sign = $datos["sign"];
 
-                        // Control del signo, Operación a realizar, Mostrar resultado.
-                        switch ($sign){
-                            
-                            case "+":
-                            $resultado = $num1 + $num2;
-                            echo "<p>El resultado es: $num1 + $num2 = $resultado</p>";
-                            break;
+            // Control del signo y operación a realizar
+            switch ($sign) {
 
-                            case "-":
-                            $resultado = $num1 - $num2;
-                            echo "<p>El resultado es: $num1 - $num2 = $resultado</p>";
-                            break;
-                                        
-                            case "*":
-                            $resultado = $num1 * $num2;
-                            echo "<p>El resultado es: $num1 * $num2 = $resultado</p>";
-                            break;
+                case "+":
+                    $resultado = $num1 + $num2;
+                    $operacion = "$num1 + $num2";
+                    break;
 
-                            case "/":
-                            $resultado = (float)($num1 / $num2);
-                            echo "<p>El resultado es: $num1 / $num2 = $resultado</p>";
-                            break;
-                                        
-                            case "%":
-                            $resultado = $num1 % $num2;
-                            echo "<p>El resultado es: $num1 % $num2 = $resultado </p>";
-                            break;
+                case "-":
+                    $resultado = $num1 - $num2;
+                    $operacion = "$num1 - $num2";
+                    break;
 
-                        }
-                    ?>
+                case "*":
+                    $resultado = $num1 * $num2;
+                    $operacion = "$num1 * $num2";
+                    break;
 
+                case "/":
+                    if ($num2 != 0) {
+                        $resultado = $num1 / $num2;
+                        $operacion = "$num1 / $num2";
+                    } else {
+                        $error = "No se puede dividir entre cero.";
+                    }
+                    break;
+
+                case "%":
+                    if ($num2 != 0) {
+                        $resultado = $num1 % $num2;
+                        $operacion = "$num1 % $num2";
+                    } else {
+                        $error = "No se puede calcular el módulo entre cero.";
+                    }
+                    break;
+
+                default:
+                    $error = "Operador no válido.";
+                    break;
+            }
+
+        } else {
+            $error = "No se han recibido todos los datos.";
+        }
+    ?>
+
+    <div class="container bg-secondary-subtle min-vh-100 text-center pt-5">
+
+        <h2 class="text-primary mb-4">Resultado de la operación</h2>
+
+        <div class="row justify-content-center">
+
+            <div class="col-12 col-md-6">
+
+                <div class="card shadow-lg p-4">
+
+                    <div class="card-body">
+
+                        <h4 class="card-title mb-4">Resultado</h4>
+
+                        <?php if ($resultado !== null): ?>
+
+                            <h5 class="mb-3">
+                                <?= $operacion ?>
+                            </h5>
+
+                            <h2 class="text-primary mb-4">
+                                <?= $resultado ?>
+                            </h2>
+
+                        <?php else: ?>
+
+                            <p class="text-danger mb-4">
+                                <?= $error ?>
+                            </p>
+
+                        <?php endif; ?>
+
+                        <a href="index.html" class="btn btn-success">
+                            Volver al formulario
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </body>
 </html>
