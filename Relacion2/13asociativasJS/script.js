@@ -19,7 +19,7 @@ function envio(evento){
     // Comprobación de mail válido
     let patronMail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if(!pratronMail.test(mail)){
+    if(!patronMail.test(mail)){
         alert("Email invalido");
         valido = false
     }
