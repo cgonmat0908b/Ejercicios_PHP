@@ -42,6 +42,12 @@
 
             </div>
 
+            <div id="resultado" class="col-md-6 col-sm-10 col-12 mx-auto mt-4 border rounded p-4 shadow-lg">
+
+            </div>
+
+            </div>
+
             <div class="col-md-3 col-sm-1 col-0">
                 <!-- Espacio en blanco a la derecha -->
             </div>
@@ -49,7 +55,64 @@
         </div>
 
     </div>
+
+    <!-- Bloque script para validación de datos -->
+    <script>
+        let formulario = document.querySelector("form");
+        formulario.addEventListener("submit", envio);
+
+        function envio(evento){
+            let num = parseInt(document.getElementById("num").value);
+            let formValido = true;
+
+            if(isNaN(num) || !Number.isInteger(num) || num < 0 ){
+                formValido = false;
+                alert("Número invalido");
+            }else{
+                formValido = true;
+            }
+
+            if(!formValido){
+                evento.preventDefault();
+            }
+        }
+
+    </script>
     
+    <!-- Lógica y muestra del programa -->
+    <?php
+    
+
+        
+
+        if (isset($_POST["num"])){
+            $num = $_POST["num"];
+            $contador = $num;
+            $acum = $num;
+
+            if($num == 0 || $num == 1){
+                $acum = 1;
+
+                echo("<script>document.getElementById('resultado').innerHTML += ".
+                "'" . $acum . " * " . $contador . "");
+
+                $acum = $acum * $contador;
+                echo(" = " . $acum . "<br>'</script>");
+
+            }else{
+                while($contador > 1){
+                    $contador--;
+                    echo("<script>document.getElementById('resultado').innerHTML += ".
+                    "'" . $acum . " * " . $contador . "");
+
+                    $acum = $acum * $contador;
+                    echo(" = " . $acum . "<br>'</script>");
+                }
+            }
+        }
+
+    ?>
+
 </body>
 
 </html>

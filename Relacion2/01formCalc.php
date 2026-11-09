@@ -14,11 +14,11 @@
 
         <!-- Primer num -->
         <label for="num1">Introduce el primer número:</label><br>
-        <input type="number" min="1" name="num1" id="num1" value="1"><br>
+        <input type="number" min="1" name="num1" id="num1" value="1" step="0.01"><br>
 
         <!-- Segundo num -->
         <label for="num2">Introduce el segundo número:</label><br>
-        <input type="number" min="1" name="num2" id="num2" value="1"><br>
+        <input type="number" min="1" name="num2" id="num2" value="1" step="0.01"><br>
 
         <!-- Operadores con select-->
         <label for="sign">Selecciona el operador:</label><br>

@@ -18,6 +18,10 @@
             if($num % $i == 0){
                 $contadorDivisibles++;
             }
+
+            if($contadorDivisibles > 2){
+                break;
+            }
         }
 
         if($contadorDivisibles > 2){
