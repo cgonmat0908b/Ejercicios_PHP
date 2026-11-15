@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ejercicio 20 · Conversor</title><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"><script src="script.js" defer></script></head>
+<body class="bg-secondary-subtle">
+    <main class="container min-vh-100 py-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-7 col-lg-6">
+                <h1 class="h2 text-primary text-center mb-4">Conversor de bases</h1>
+
+                <form class="border rounded bg-white p-4 shadow" action="calculos.php" method="post">
+                    <label for="decimal" class="form-label">Número decimal</label>
+
+                    <input class="form-control mb-3" type="number" id="decimal" name="decimal" min="0" step="1" required>
+
+                    <label for="base" class="form-label">Convertir a</label>
+
+                    <select class="form-select mb-4" id="base" name="base" required>
+                        <option value="" selected disabled>Selecciona una operación</option>
+                        <option value="2">Binario (base 2)</option>
+                        <option value="8">Octal (base 8)</option>
+                        <option value="16">Hexadecimal (base 16)</option>
+                    </select>
+
+                    <button class="btn btn-success w-100" type="submit">Convertir</button>
+                </form>
+
+                <div class="text-center mt-4">
+                    <a class="btn btn-outline-primary" href="calculadora/index.html">Abrir calculadora</a>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
